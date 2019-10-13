@@ -173,24 +173,26 @@ mysqli_select_db($connection, DB_NAME);
 if (@$_POST['ParentID'] !== null) {
 
                 $ParentID = $_POST["ParentID"];
-                        $LastName = $_POST["LastName"];
-                        $FirstName = $_POST["FirstName"];
-                                $Gender = $_POST["Gender"];
-                                $Age = $_POST["Age"];
-                                        $epipen_used = $_POST["epipen_used"];
-                                        $action_plan = $_POST["action_plan"];
+                $LastName = $_POST["LastName"];
+                $FirstName = $_POST["FirstName"];
+                $Gender = $_POST["Gender"];
+                $Age = $_POST["Age"];
+                $epipen_used = $_POST["epipen_used"];
+                $action_plan = $_POST["action_plan"];
+                $type_of_allergy = $_POST["type_of_allergy"];
+                $emer_contact_name = $_POST["emer_contact_name"];
+                $emer_contact_no = $_POST["emer_contact_no"];
 
-                                                $type_of_allergy = $_POST["type_of_allergy"];
-                                                $emer_contact_name = $_POST["emer_contact_name"];
-                                                        $emer_contact_no = $_POST["emer_contact_no"];
-
-                                                                $type_of_allergy = implode(',',$type_of_allergy);
-
-                                                                $sql = "INSERT INTO children (key_id, last_name, first_name, gender, age, epipen_used, action_plan, type_of_allergy, emer_contact_name, emer_contact_no)
-                                                                                                VALUES ('$ParentID','$LastName','$FirstName','$Gender','$Age','$epipen_used','$action_plan','$type_of_allergy','$emer_contact_name','$emer_contact_no')";
+                $type_of_allergy = implode(',',$type_of_allergy);
+                $sql = "INSERT INTO children (key_id, last_name, first_name, gender, age, epipen_used, action_plan, type_of_allergy, emer_contact_name, emer_contact_no)
+                                                VALUES ('$ParentID','$LastName','$FirstName','$Gender','$Age','$epipen_used','$action_plan','$type_of_allergy','$emer_contact_name','$emer_contact_no')";
 
 
         if (mysqli_query($connection, $sql)) {
+                        $sql2 = "SELECT * FROM children where emer_contact_no  =$emer_contact_no";
+                        $Recordset1 = mysqli_query($connection, $sql2 );
+                        $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
+                        $id = $row_Recordset1[child_id];
 
                         echo '<div style="   margin: auto;
                         background-color:beige;
@@ -198,10 +200,11 @@ if (@$_POST['ParentID'] !== null) {
                         border-radius: 5px;
                         padding: 10px;">
                         <h2 style="color : #558CF8"> DETAILS SAVED SUCCCESSFULLY </h2>
-
+                        <h2 style="color : #558CF8"> YOUR ID IS <? echo $id; ?> </h2>
                         </div>';
+                        
 
-                        //echo "Insert successful!";
+
         } else {
                         echo '<div style="   margin: auto;
                         background-color:beige;
@@ -209,8 +212,6 @@ if (@$_POST['ParentID'] !== null) {
                         border-radius: 5px;
                         padding: 10px;">
                         <h2 style="color : #FF0000"> PLEASE ENTER REQUIRED FIELDS </h2>';
-
-                        //echo "Error: Null value!". "<br>";
         }
         $connection->close();
 

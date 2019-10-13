@@ -64,6 +64,22 @@ box-sizing: border-box;" name="event_type" placeholder="Type of the event" patte
   border-radius: 4px;
 box-sizing: border-box;" name="event_desc" placeholder="Description of the event" pattern = "[\w\s]+"><br />
 
+<label for="event_desc">Event Location:</label><input type="text" style= " width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+box-sizing: border-box;" name="location" placeholder="enter the location" pattern = "[\w\s]+"><br />
+
+<label for="event_desc">Enther the Event time:</label><input type="text" style= " width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+box-sizing: border-box;" name="data_time" placeholder="enter the date" pattern = "[\w\s]+"><br />
+
 
 
 <input type="submit" value="SUBMIT" style = "width: 100%;
@@ -96,10 +112,12 @@ if(@$_POST["event_name"] !== null) {
                 $event_name = $_POST["event_name"];
                         $event_type = $_POST["event_type"];
                         $event_desc= $_POST["event_desc"];
+                        $location= $_POST["location"];
+                        $data_time= $_POST["data_time"];
                                 $key = rand(1000,9999);
 
-                                $sql = "INSERT INTO party (event_id, event_name, event_type, event_desc)
-                                                                VALUES ('$key','$event_name','$event_type','$event_desc')";
+                                $sql = "INSERT INTO party (event_id, event_name, event_type, event_desc, location, data_time)
+                                                                VALUES ('$key','$event_name','$event_type','$event_desc','$location','$data_time')";
 
 
                                         if (mysqli_query($connection, $sql)) {
