@@ -122,8 +122,8 @@ mysqli_select_db($connection, DB_NAME);
   border-radius: 4px;
   box-sizing: border-box;">
     <option value="">Yes / No</option>
-    <option value="1">Yes</option>
-    <option value="0">No</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
 
     </select>
     <br />
@@ -137,8 +137,8 @@ mysqli_select_db($connection, DB_NAME);
   border-radius: 4px;
   box-sizing: border-box;">
     <option value="">Yes / No</option>
-    <option value="1">Yes</option>
-    <option value="0">No</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
     </select>
     <br />
 
@@ -189,7 +189,7 @@ if (@$_POST['ParentID'] !== null) {
 
 
         if (mysqli_query($connection, $sql)) {
-                        $sql2 = "SELECT * FROM children where emer_contact_no  =$emer_contact_no";
+                        $sql2 = "SELECT * FROM children where key_id  ='$ParentID' AND first_name ='$FirstName'";
                         $Recordset1 = mysqli_query($connection, $sql2 );
                         $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
                         $id = $row_Recordset1[child_id];

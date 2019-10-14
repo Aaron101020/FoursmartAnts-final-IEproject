@@ -128,8 +128,8 @@ mysqli_select_db($connection, DB_NAME);
   border-radius: 4px;
   box-sizing: border-box;">
     <option value="">Yes / No</option>
-    <option value="1">Yes</option>
-    <option value="0">No</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
     </select>
     <br />
 
@@ -142,8 +142,8 @@ mysqli_select_db($connection, DB_NAME);
   border-radius: 4px;
   box-sizing: border-box;">
     <option value="">Yes / No</option>
-    <option value="1">Yes</option>
-    <option value="0">No</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
     </select>
     <br />
 
